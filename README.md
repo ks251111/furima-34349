@@ -11,11 +11,12 @@
 | full_first_name    | string   | null: false               |
 | kana_last_name     | string   | null: false               |
 | kana_first_name    | string   | null: false               |
-| birthday           | datetime | null: false               |
+| birthday           | date     | null: false               |
 
 ### Association
 
 - has_many :items
+- has_many :buy
 
 ## items テーブル
 
@@ -34,6 +35,7 @@
 ### Association
 
 - belongs_to :user
+- has_one    :buy
 
 ## buysテーブル
 
@@ -45,17 +47,20 @@
 ### Association
 
 - has_one :shipping
+- belongs_to :user
+- belongs_to :item
 
 ## shippings テーブル
 
 | Column        | Type       | Option                         |
 | ------------- | ---------- | ------------------------------ |
 | postal        | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
+| area_id       | integer    | null: false                    |
 | city          | string     | null: false                    |
 | address       | string     | null: false                    |
 | build         | string     |                                |
-| tel           | integer    | null: false                    |
+| tel           | string     | null: false                    |
+| buy           | references | null: false                    |
 
 ### Association
 
