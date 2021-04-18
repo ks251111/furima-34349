@@ -28,4 +28,8 @@ class Item < ApplicationRecord
     validates :area_id
     validates :day_id
   end
+
+  validates :price, numericality: { allow_nil: true }
+  
+  validates :price, inclusion: { in: 300..9999999 }
 end
