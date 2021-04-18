@@ -13,11 +13,6 @@ class Item < ApplicationRecord
     validates :image
     validates :title
     validates :text
-    validates :category_id
-    validates :status_id
-    validates :burden_id
-    validates :area_id
-    validates :day_id
     validates :price
   end
 
@@ -30,6 +25,6 @@ class Item < ApplicationRecord
   end
 
   validates :price, numericality: { allow_nil: true }
-  
+
   validates :price, inclusion: { in: 300..9999999 }
 end
