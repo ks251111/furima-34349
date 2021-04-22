@@ -26,5 +26,5 @@ class Item < ApplicationRecord
 
   validates :price, numericality: { allow_nil: true }
 
-  validates :price, inclusion: { in: 300..9999999 }
+  validates :price, inclusion: { in: 300..9_999_999 }
 end
