@@ -12,6 +12,8 @@ class BuyShipping
     validates :token
   end
   validates :area_id, numericality: {other_than: 1}
+  validates :postal, format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
+  validates :tel, format: {with: /\A\d{10,11}\z/}
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
