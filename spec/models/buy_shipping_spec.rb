@@ -63,6 +63,21 @@ RSpec.describe BuyShipping, type: :model do
         @buy_shipping.valid?
         expect(@buy_shipping.errors.full_messages).to include("Tel is invalid")
       end
+      it 'telが全角では購入できない' do
+        @buy_shipping.tel = '０９０１２３４５６７８'
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Tel is invalid")
+      end
+      it 'telが数字以外では購入できない' do
+        @buy_shipping.tel = 'aaabbbbcccc'
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Tel is invalid")
+      end
+      it 'telが半角英数混合では購入できない' do
+        @buy_shipping.tel = 'aaa12345678'
+        @buy_shipping.valid?
+        expect(@buy_shipping.errors.full_messages).to include("Tel is invalid")
+      end
       it 'userが紐付いていないと購入できない' do
         @buy_shipping.user_id = nil
         @buy_shipping.valid?
