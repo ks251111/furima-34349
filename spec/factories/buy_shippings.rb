@@ -7,6 +7,5 @@ FactoryBot.define do
     build   { '柳ビル103' }
     tel     { '09012345678' }
     token   { 'tok_abcdefghijk00000000000000000' }
-    item_id { '10' }
   end
 end
