@@ -17,6 +17,8 @@
 
 - has_many :items
 - has_many :buys
+- has_many :comments
+- has_many :likes
 
 ## items テーブル
 
@@ -36,6 +38,8 @@
 
 - belongs_to :user
 - has_one    :buy
+- has_many   :comments
+- has_many   :likes
 
 ## buysテーブル
 
@@ -60,8 +64,33 @@
 | address       | string     | null: false                    |
 | build         | string     |                                |
 | tel           | string     | null: false                    |
-| buy           | references | null: false                    |
+| buy           | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :buy
+
+## commentsテーブル
+
+| Column | Type      | Option                         |
+| ------ | --------- | ------------------------------ |
+| text   | text      | null: false                    |
+| user   | references| null: false, foreign_key: true |
+| item   | references| null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## likesテーブル
+
+| Column | Type       | Option                         |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
