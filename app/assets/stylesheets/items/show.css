@@ -184,6 +184,12 @@
   margin: 10px 5px 0 0;
 }
 
+.comments_list{
+  list-style-type: square;
+  padding-bottom: 5px;
+  margin-bottom: 50px;
+}
+
 .links {
   display: flex;
   justify-content: space-between;
