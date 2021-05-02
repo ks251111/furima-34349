@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_one :buy
   has_one_attached :image
   has_many :comments
+  has_many :likes
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category

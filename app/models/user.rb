@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :buys
   has_many :comments
+  has_many :likes
 
   with_options presence: true do
     validates :nickname
@@ -27,4 +28,8 @@ class User < ApplicationRecord
   end
 
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
+
+  def liked_by?(item_id)
+    likes.where(item_id: item_id).exists?
+  end
 end
