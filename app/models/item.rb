@@ -29,4 +29,12 @@ class Item < ApplicationRecord
   validates :price, numericality: { allow_nil: true }
 
   validates :price, inclusion: { in: 300..9_999_999 }
+
+  def self.search(search)
+    if search != ""
+      Item.where('text LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%")
+    else
+      Item.all
+    end
+  end
 end
