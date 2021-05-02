@@ -69,7 +69,11 @@
     <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
+        <% if current_user.liked_by?(@item) %>
+          <%= link_to 'お気に入り解除', item_like_path(@item.id), method: :delete, class:"favorite-link" %> <%= @item.likes.count %>
+        <% else %>
+          <%= link_to 'お気に入り', item_likes_path(@item.id), method: :post, class:"favorite-link" %> <%= @item.likes.count %>
+        <% end %>
       </div>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
