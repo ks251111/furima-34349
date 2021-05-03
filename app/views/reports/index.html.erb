@@ -1,0 +1,30 @@
+<%= render "shared/second-header" %>
+
+<div class='transaction-contents'>
+  <div class='transaction-main'>
+    <h1 class='transaction-title-text'>
+      対象商品を通報する
+    </h1>
+    <div class='buy-item-info'>
+      <%= image_tag @item.image, class: 'buy-item-img' %>
+      <div class='buy-item-right-content'>
+        <h2 class='buy-item-text'>
+          <%= @item.title %>
+        </h2>
+        <div class='buy-item-price'>
+          <p class='item-price-text'>¥<%= @item.price %></p>
+          <p class='item-price-sub-text'><%= @item.burden.name %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="comment-box">
+      <%= form_with model: [@item, @report], local: true do |form| %>
+        <%= form.text_area :text, placeholder: "通報理由", class: "comment-text" %>
+        <%= form.submit "通報する", class:"comment-btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%= render "shared/second-footer"%>
