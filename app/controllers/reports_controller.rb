@@ -14,7 +14,7 @@ class ReportsController < ApplicationController
     else
       @item = @report.item
       @reports = @item.reports
-      render "items/show"
+      render :index
     end
   end
 
