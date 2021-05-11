@@ -1,0 +1,74 @@
+<%= render "shared/header" %>
+
+<h1 class='transaction-title-text'>
+<%= @user.nickname %>さんの商品一覧
+</h1>
+
+<ul class='item-lists'>
+  <% @user.items.each do |item| %>
+    <li class='list'>
+      <%= link_to item_path(item.id) do %>
+        <div class='item-img-content'>
+          <%= image_tag item.image, class: "item-img" %>
+
+          <% if item.buy.present? %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= item.title %>
+          </h3>
+          <div class='item-price'>
+            <span><%= item.price %>円<br><%= item.burden.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'><%= item.likes.count %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+
+<h1 class='transaction-title-text'>
+<%= @user.nickname %>さんのいいねした商品一覧
+</h1>
+
+<ul class='item-lists'>
+  <% @user.likes.each do |like| %>
+    <li class='list'>
+      <%= link_to item_path(like.item.id) do %>
+        <div class='item-img-content'>
+          <%= image_tag like.item.image, class: "item-img" %>
+
+          <% if like.item.buy.present? %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <% end %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= like.item.title %>
+          </h3>
+          <div class='item-price'>
+            <span><%= like.item.price %>円<br><%= like.item.burden.name %></span>
+            <div class='star-btn'>
+              <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'><%= like.item.likes.count %></span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= render "shared/footer" %>
