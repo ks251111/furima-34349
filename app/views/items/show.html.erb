@@ -68,13 +68,8 @@
     </table>
     <% if user_signed_in? %>
     <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <% if current_user.liked_by?(@item) %>
-          <%= link_to 'お気に入り解除', item_like_path(@item), method: :delete, class:"favorite-link" %> <%= @item.likes.count %>
-        <% else %>
-          <%= link_to 'お気に入り', item_likes_path(@item), method: :post, class:"favorite-link" %> <%= @item.likes.count %>
-        <% end %>
+      <div class="favorite-btn" id="item_<%= @item.id %>">
+        <%= render 'item', item: @item %>
       </div>
       <div class="report-btn">
         <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>

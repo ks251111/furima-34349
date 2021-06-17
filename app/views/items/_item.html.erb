@@ -1,0 +1,6 @@
+<%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
+<% if @item.liked_by(current_user).present? %>
+  <%= link_to 'お気に入り解除', item_like_path(@item.id, @item.liked_by(current_user)), method: :delete, class:"favorite-link", remote: true %> <%= @item.likes.count %>
+<% else %>
+  <%= link_to 'お気に入り', item_likes_path(@item), method: :post, class:"favorite-link", remote: true %> <%= @item.likes.count %>
+<% end %>
