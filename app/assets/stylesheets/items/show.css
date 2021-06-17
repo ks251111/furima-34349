@@ -99,6 +99,10 @@
   font-size: 14px;
 }
 
+.detail-value a {
+  color: black;
+}
+
 .option {
   display: flex;
   justify-content: space-between;
