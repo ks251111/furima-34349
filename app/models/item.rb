@@ -3,7 +3,7 @@ class Item < ApplicationRecord
   has_one :buy
   has_one_attached :image
   has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :likes, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :reports
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -38,5 +38,9 @@ class Item < ApplicationRecord
     else
       Item.all
     end
+  end
+
+  def liked_by(user)
+    Like.find_by(user_id: user.id, item_id: id)
   end
 end

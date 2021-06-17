@@ -29,8 +29,4 @@ class User < ApplicationRecord
   end
 
   validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
-
-  def liked_by?(item_id)
-    likes.where(item_id: item_id).exists?
-  end
 end
