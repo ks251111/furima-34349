@@ -1,3 +1,22 @@
+# URL
+
+https://furima-34349.herokuapp.com/
+
+# Basic認証のIDとパスワード
+
+ID：test<br>
+パスワード：1111
+
+# テストアカウント１
+
+test@email<br>
+aaa111
+
+# テストアカウント2
+
+test@email2<br>
+aaa111
+
 # テーブル設計
 
 ## users テーブル
